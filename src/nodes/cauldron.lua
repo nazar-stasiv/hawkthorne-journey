@@ -61,8 +61,7 @@ function Cauldron:keypressed( button, player )
       self.prompt = nil
       player.freeze = false
       if result == 'Yes' then
-        local screenshot = love.graphics.newImage(love.graphics.newScreenshot())
-        Gamestate.stack('brewing', player, screenshot, self.name)
+        Gamestate.stack('brewing', player, nil, self.name)
       end
     end
     self.prompt = Prompt.new(message, callback, options)

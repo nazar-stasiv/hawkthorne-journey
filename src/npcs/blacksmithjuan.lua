@@ -37,7 +37,6 @@ return {
     },
   },
   inventory = function(npc, player)
-    local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-    Gamestate.stack("shopping", player, screenshot, "juans_smithy")
+    Gamestate.stack("shopping", player, nil, "juans_smithy")
   end,
 }

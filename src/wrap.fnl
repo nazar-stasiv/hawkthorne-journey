@@ -203,11 +203,4 @@
                          (- (love.graphics.getWidth) 100) 5 0 1 1)
     (fonts.revert)))
 
-(local new-screenshot love.graphics.newScreenshot)
-
-(fn love.graphics.newScreenshot [] (set window.dressing_visible false)
-  (love.draw)
-  (local ss (new-screenshot))
-  (set window.dressing_visible true)
-  ss)
 

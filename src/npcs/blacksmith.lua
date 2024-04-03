@@ -89,8 +89,7 @@ return {
     },
   },
   inventory = function(npc, player)
-    local screenshot = love.graphics.newImage( love.graphics.newScreenshot() )
-    Gamestate.stack("shopping", player, screenshot, npc.name)
+    Gamestate.stack("shopping", player, nil, npc.name)
   end,
 
   collide = function(npc, node, dt, mtv_x, mtv_y)

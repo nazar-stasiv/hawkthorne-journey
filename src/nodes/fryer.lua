@@ -60,8 +60,7 @@ function Fryer:keypressed( button, player )
       self.prompt = nil
       player.freeze = false
       if result == 'Yes' then
-        local screenshot = love.graphics.newImage(love.graphics.newScreenshot())
-        Gamestate.stack('frying', player, screenshot)
+        Gamestate.stack('frying', player, nil)
       end
     end
     self.prompt = Prompt.new(message, callback, options)
