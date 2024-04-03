@@ -7,7 +7,7 @@ ifeq ($(UNAME), Darwin)
   LOVE = bin/love.app/Contents/MacOS/love
 else
   TMXTAR = tmx2lua.linux.tar
-  LOVE = bin/love-11.3-x86_64.AppImage
+  LOVE = bin/love
 endif
 
 ifeq ($(shell which wget),)
@@ -34,11 +34,7 @@ src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
 
 bin/tmx2lua:
-	mkdir -p bin
-	$(wget) http://hawkthorne.github.com/tmx2lua/downloads/$(TMXTAR)
-	tar -xvf $(TMXTAR)
-	rm -f $(TMXTAR)
-	mv tmx2lua bin
+	ln -s /usr/bin/tmx2lua bin/tmx2lua
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
@@ -48,11 +44,10 @@ bin/love.app/Contents/MacOS/love:
 	mv love.app bin
 	cp osx/Info.plist bin/love.app/Contents
 
-bin/love-11.3-x86_64.AppImage:
+bin/love:
 	mkdir -p bin
-	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-x86_64.AppImage
-	mv love-11.3-x86_64.AppImage bin
-	chmod +x bin/love-11.3-x86_64.AppImage
+	ln -s /usr/bin/love bin/love
+
 
 ######################################################
 # THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
