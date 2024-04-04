@@ -22,3 +22,7 @@ save
 src/test/fixtures/Fake.app
 Journey\ to\ the\ Center\ of\ Hawkthorne.app
 sparkle/appcast.json
+/luarocks
+/lua
+/lua_modules
+/.luarocks
