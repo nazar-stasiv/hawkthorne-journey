@@ -1,19 +1,9 @@
 local lovetest = {}
-
--- Search the passed in arguments for either -t or --test
-function lovetest.detect(args) 
-  for _, flag in ipairs(args) do
-    if flag == "-t" or flag == "--test" then
-      return true
-    end
-  end
-  return false
-end
+local lunatest = require "lunatest"
 
 -- Run the unit tests, On windows, don't quit. This allows the user to see the
 -- test results in the console
 function lovetest.run() 
-  require "test/lunatest"
 
   for _, filename in ipairs(love.filesystem.getDirectoryItems('test')) do
     local index, _ = string.find(filename,  "test_")

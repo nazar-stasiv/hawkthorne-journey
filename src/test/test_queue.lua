@@ -22,9 +22,9 @@ function test_queue_validate_arguments()
   local q = queue.new()
   q:push('jump', 1, 2)
   local f, x, y = q:poll('jump')
-  assert_equal(f, true)
-  assert_equal(x, 1)
-  assert_equal(y, 2)
+  lunatest.assert_equal(f, true)
+  lunatest.assert_equal(x, 1)
+  lunatest.assert_equal(y, 2)
 end
 
 -- it should overwrite events
@@ -33,7 +33,7 @@ function test_queue_overwrite()
   q:push('jump', 1, 2)
   q:push('jump', 2, 3)
   local f, x, y = q:poll('jump')
-  assert_equal(f, true)
-  assert_equal(x, 2)
-  assert_equal(y, 3)
+  lunatest.assert_equal(f, true)
+  lunatest.assert_equal(x, 2)
+  lunatest.assert_equal(y, 3)
 end

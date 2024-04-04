@@ -2,13 +2,13 @@ local character = require "src/character"
 
 --Should fail
 function test_pick_unknown_character() 
-  assert_error(function() 
+  lunatest.assert_error(function() 
     character.pick('unknown', 'base')
   end, "Unknown character should fail")
 end
 
 function test_pick_unknown_costume() 
-  assert_error(function() 
+  lunatest.assert_error(function() 
     character.pick('abed', 'unknown')
   end, "Unknown character should fail")
 end
@@ -18,14 +18,14 @@ function test_pick_known_combination()
 end
 
 function test_load_unknown_character() 
-  assert_error(function() 
+  lunatest.assert_error(function() 
     character.load('unknown')
   end, "Unknown character should fail")
 end
 
 function test_load_abed() 
   local abed = character.load('abed')
-  assert_equal(abed.name, 'abed')
+  lunatest.assert_equal(abed.name, 'abed')
 end
 
 function test_load_abed() 
@@ -36,12 +36,12 @@ function test_load_abed()
     end
   end
 
-  assert_true(found, "Couldn't find Abed in characters")
+  lunatest.assert_true(found, "Couldn't find Abed in characters")
 end
 
 function test_load_current() 
   local character = character.current()
-  assert_equal(character.name, 'abed')
+  lunatest.assert_equal(character.name, 'abed')
 end
 
 function test_load_current() 
@@ -51,16 +51,16 @@ function test_load_current()
 
   character:reset()
 
-  assert_equal(character.state, 'idle')
-  assert_equal(character.direction, 'right')
+  lunatest.assert_equal(character.state, 'idle')
+  lunatest.assert_equal(character.direction, 'right')
 end
 
 function test_find_unrelated_costume()
   local c = character.findRelatedCostume('abed', 'unknown_category')
-  assert_equal(c, 'base')
+  lunatest.assert_equal(c, 'base')
 end
 
 function test_find_related_costume()
   local c = character.findRelatedCostume('abed', 's1e7')
-  assert_equal(c, 'batman')
+  lunatest.assert_equal(c, 'batman')
 end

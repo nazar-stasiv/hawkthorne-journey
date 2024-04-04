@@ -1,3 +1,4 @@
+local lunatest = require "lunatest"
 local controls = require("inputcontroller").get()
 local Level = require "level"
 local Sound = require 'vendor/TEsound'
@@ -151,7 +152,7 @@ local function checkDoor(door, sounds)
       -- skip check
     else
       local targetLevel = levels[targetLevelName]
-      assert_not_nil(targetLevel, string.format("Level %s not found. Referenced from %s.", targetLevelName, door:getSourceId()))
+      lunatest.assert_not_nil(targetLevel, string.format("Level %s not found. Referenced from %s.", targetLevelName, door:getSourceId()))
       local targetDoorName = door.to
       if targetDoorName == nil then
         -- allow doors with no target door names into other level and assume 'main'
@@ -162,16 +163,16 @@ local function checkDoor(door, sounds)
           fail(string.format("Target door name into the same level is unspecified - %s.", door:getSourceId()))
         end
       end
-      assert_true(targetDoorName ~= "", string.format("Target door name is empty - %s.", door:getSourceId()))
+      lunatest.assert_true(targetDoorName ~= "", string.format("Target door name is empty - %s.", door:getSourceId()))
       local targetDoor = targetLevel.doors[targetDoorName]
-      assert_not_nil(targetDoor, string.format("Door '%s' not found in level %s. Referenced from %s.", targetDoorName, targetLevelName, door:getSourceId()))
+      lunatest.assert_not_nil(targetDoor, string.format("Door '%s' not found in level %s. Referenced from %s.", targetDoorName, targetLevelName, door:getSourceId()))
     end
   end
 
   do
     local actionmap = controls:getActionmap()
     local button = door.button
-    assert_not_nil(actionmap[button], string.format("Value '%s' of door's property button not recognized (%s).", tostring(button), door:getSourceId()))
+    lunatest.assert_not_nil(actionmap[button], string.format("Value '%s' of door's property button not recognized (%s).", tostring(button), door:getSourceId()))
   end
 
   if type(door.sound) ~= 'boolean' then
@@ -185,7 +186,7 @@ local function checkDoor(door, sounds)
     if not ok then
       fail(string.format("Error loading key '%s'. Referenced from %s - %s.", keyName, door:getSourceId(), msg))
     end
-    assert_not_nil(msg, string.format("Key '%s' not found. Referenced from %s.", keyName, door:getSourceId()))
+    lunatest.assert_not_nil(msg, string.format("Key '%s' not found. Referenced from %s.", keyName, door:getSourceId()))
 
     if door.instant then
       fail(string.format("Key (%s) not allowed for instant door - %s.", keyName, door:getSourceId()))
@@ -210,7 +211,7 @@ function TS.test_doors()
 
     -- level has to contain door 'main'
     local mainDoor = level.doors['main']
-    assert_not_nil(mainDoor, string.format("Door 'main' not found in %s.", level:getSourceId()))
+    lunatest.assert_not_nil(mainDoor, string.format("Door 'main' not found in %s.", level:getSourceId()))
   end
 
   local oldSoundDisabled = Sound.disabled

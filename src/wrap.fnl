@@ -62,7 +62,6 @@
                   "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
   (local args (cli:parse arg))
   (when (not args) (error "Could not parse command line arguments"))
-  (lovetest.detect args)
   (when testing (lovetest.run) (lua "return "))
   (when (. args :wait) (love.timer.sleep 3))
   (when (not= (. args :level) "") (set state (. args :level))

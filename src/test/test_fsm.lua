@@ -15,48 +15,48 @@ end
 -- it should start as green
 function test_fsm_start_green()
   local fsm = stoplight()
-  assert_true(fsm:is('green'))
+  lunatest.assert_true(fsm:is('green'))
 end
 
 -- it should not let you get to the wrong state
 function test_fsm_state_transition()
   local fsm = stoplight()
-  assert_false(fsm:panic())
-  assert_false(fsm:calm())
-  assert_false(fsm:clear())
+  lunatest.assert_false(fsm:panic())
+  lunatest.assert_false(fsm:calm())
+  lunatest.assert_false(fsm:clear())
 end
 
 -- it("should let you go to yellow
 function test_fsm_no_yellow()
   local fsm = stoplight()
-  assert_true(fsm:warn())
-  assert_true(fsm:is('yellow'))
+  lunatest.assert_true(fsm:warn())
+  lunatest.assert_true(fsm:is('yellow'))
 end
 
 -- it should tell you what it can do
 function test_fsm_can()
   local fsm = stoplight()
-  assert_true(fsm:can('warn'))
-  assert_false(fsm:can('panic'))
-  assert_false(fsm:can('calm'))
-  assert_false(fsm:can('clear'))
+  lunatest.assert_true(fsm:can('warn'))
+  lunatest.assert_false(fsm:can('panic'))
+  lunatest.assert_false(fsm:can('calm'))
+  lunatest.assert_false(fsm:can('clear'))
 end
 
 -- it should tell you what it can't do
 function test_fsm_cannot()
   local fsm = stoplight()
-  assert_false(fsm:cannot('warn'))
-  assert_true(fsm:cannot('panic'))
-  assert_true(fsm:cannot('calm'))
-  assert_true(fsm:cannot('clear'))
+  lunatest.assert_false(fsm:cannot('warn'))
+  lunatest.assert_true(fsm:cannot('panic'))
+  lunatest.assert_true(fsm:cannot('calm'))
+  lunatest.assert_true(fsm:cannot('clear'))
 end
 
 -- it should support checking states
 function test_fsm_check_states()
   local fsm = stoplight()
-  assert_true(fsm:is('green'))
-  assert_false(fsm:is('red'))
-  assert_false(fsm:is('yellow'))
+  lunatest.assert_true(fsm:is('green'))
+  lunatest.assert_false(fsm:is('red'))
+  lunatest.assert_false(fsm:is('yellow'))
 end
 
 -- it should cancel the warn event on leave
@@ -69,8 +69,8 @@ function test_fsm_canel_warn_event()
 
   local result = fsm:warn()
 
-  assert_false(result)
-  assert_true(fsm:is('green'))
+  lunatest.assert_false(result)
+  lunatest.assert_true(fsm:is('green'))
 end
 
 -- it should cancel the warn event on before
@@ -83,8 +83,8 @@ function test_fsm_cancel_onbefore_event()
 
   local result = fsm:warn()
 
-  assert_false(result)
-  assert_true(fsm:is('green'))
+  lunatest.assert_false(result)
+  lunatest.assert_true(fsm:is('green'))
 end
 
 -- it should accept other arguments
@@ -97,7 +97,7 @@ function test_fsm_accept_arguments()
 
   fsm:warn("bar")
 
-  assert_equal(fsm.foo, 'bar')
+  lunatest.assert_equal(fsm.foo, 'bar')
 end
 
 -- it should fire the onstatechange handler
@@ -112,9 +112,9 @@ function test_fsm_change_handler()
 
   fsm:warn()
 
-  assert_equal(fsm.name, 'warn')
-  assert_equal(fsm.from, 'green')
-  assert_equal(fsm.to, 'yellow')
+  lunatest.assert_equal(fsm.name, 'warn')
+  lunatest.assert_equal(fsm.from, 'green')
+  lunatest.assert_equal(fsm.to, 'yellow')
 end
 
 -- it should support mixins
@@ -134,12 +134,12 @@ function test_fsm_mixins()
 
   light:warn()
 
-  assert_true(light:is('yellow'))
-  assert_equal(light.name, 'warn')
-  assert_equal(light.from, 'green')
-  assert_equal(light.to, 'yellow')
+  lunatest.assert_true(light:is('yellow'))
+  lunatest.assert_equal(light.name, 'warn')
+  lunatest.assert_equal(light.from, 'green')
+  lunatest.assert_equal(light.to, 'yellow')
 
-  assert_true(light2:is('green'))
+  lunatest.assert_true(light2:is('green'))
 end
 
 -- it should fire the onwarn handler
@@ -154,8 +154,8 @@ function test_fsm_fire_onwarn()
 
   fsm:warn()
 
-  assert_equal(fsm.name, 'warn')
-  assert_equal(fsm.from, 'green')
-  assert_equal(fsm.to, 'yellow')
+  lunatest.assert_equal(fsm.name, 'warn')
+  lunatest.assert_equal(fsm.from, 'green')
+  lunatest.assert_equal(fsm.to, 'yellow')
 end
 

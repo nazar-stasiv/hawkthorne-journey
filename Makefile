@@ -5,8 +5,8 @@ ITCH_ACCOUNT=change-me-too
 URL=https://gitlab.com/alexjgriffith/min-love2d-fennel
 AUTHOR="Your Name"
 DESCRIPTION="Minimal setup for trying out Phil Hagelberg's fennel/love game design process."
-GITHUB_USERNAME := $(shell grep GITHUB_USERNAME credentials.private | cut -d= -f2)
-GITHUB_PAT := $(shell grep GITHUB_PAT credentials.private | cut -d= -f2)
+GITHUB_USERNAME := "liberodark"
+GITHUB_PAT := "hawkthorne-journey"
 LIBS := $(wildcard lib/*)
 LUA := $(wildcard *.lua)
 SRC := $(wildcard *.fnl)
@@ -67,7 +67,7 @@ upload: uploadlinux uploadmac uploadwindows
 
 release: linux mac windows upload cleansrc
 
-.PHONY: clean contributors run productionize deploy love maps appcast lint count
+.PHONY: clean contributors run productionize deploy love maps appcast lint count deps
 
 UNAME := $(shell uname)
 
@@ -97,19 +97,19 @@ build/hawkthorne.love: $(tilemaps) src/*
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
 
 deps:
-	luarocks --lua-version 5.1 --local init
-	luarocks install hc
-	luarocks install JSON4Lua
-	luarocks install middleclass
-	luarocks install anim8
-	luarocks install inspect
-	luarocks install tween
-	luarocks install lunatest
-	luarocks install luasocket
-	luarocks install fennel
-	luarocks install lume
+	luarocks --lua-version 5.1 config local_by_default true
+	luarocks --lua-version 5.1 --local install hc
+	luarocks --lua-version 5.1 --local install JSON4Lua
+	luarocks --lua-version 5.1 --local install middleclass
+	luarocks --lua-version 5.1 --local install anim8
+	luarocks --lua-version 5.1 --local install inspect
+	luarocks --lua-version 5.1 --local install tween
+	luarocks --lua-version 5.1 --local install lunatest
+	luarocks --lua-version 5.1 --local install luasocket
+	luarocks --lua-version 5.1 --local install fennel
+	luarocks --lua-version 5.1 --local install lume
 
-run: $(tilemaps) $(LOVE) deps
+run: $(tilemaps) $(LOVE)
 	$(LOVE) src
 
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
@@ -212,9 +212,6 @@ deploy: $(CI_TARGET)
 contributors: venv
 	venv/bin/python scripts/clean.py > CONTRIBUTORS
 	venv/bin/python scripts/credits.py > src/credits.lua
-
-test: $(LOVE) maps
-	$(LOVE) src --test
 
 validate: venv lint
 	venv/bin/python scripts/validate.py src
