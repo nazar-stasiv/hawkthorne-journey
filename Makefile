@@ -96,7 +96,20 @@ build/hawkthorne.love: $(tilemaps) src/*
 	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
 
-run: $(tilemaps) $(LOVE)
+deps:
+	luarocks --lua-version 5.1 --local init
+	luarocks install hc
+	luarocks install JSON4Lua
+	luarocks install middleclass
+	luarocks install anim8
+	luarocks install inspect
+	luarocks install tween
+	luarocks install lunatest
+	luarocks install luasocket
+	luarocks install fennel
+	luarocks install lume
+
+run: $(tilemaps) $(LOVE) deps
 	$(LOVE) src
 
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
