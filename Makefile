@@ -11,9 +11,7 @@ LIBS := $(wildcard lib/*)
 LUA := $(wildcard *.lua)
 SRC := $(wildcard *.fnl)
 
-count: ; cloc *.fnl
-
-clean: ; rm -rf releases/*
+count: ; cloc src/*.lua src/*.fnl
 
 LOVEFILE=releases/$(NAME)-$(VERSION).love
 
@@ -69,7 +67,7 @@ upload: uploadlinux uploadmac uploadwindows
 
 release: linux mac windows upload cleansrc
 
-.PHONY: clean contributors run productionize deploy love maps appcast lint
+.PHONY: clean contributors run productionize deploy love maps appcast lint count
 
 UNAME := $(shell uname)
 
@@ -220,6 +218,7 @@ clean:
 	rm -f notes.html
 	rm -rf src/maps/*.lua
 	rm -rf $(OSXAPP)
+	rm -rf releases/*
 
 reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/*.json
