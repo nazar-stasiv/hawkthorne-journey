@@ -11,7 +11,7 @@ LIBS := $(wildcard lib/*)
 LUA := $(wildcard *.lua)
 SRC := $(wildcard *.fnl)
 
-count: ; cloc src/*.lua src/*.fnl
+count: ; cloc src
 
 LOVEFILE=releases/$(NAME)-$(VERSION).love
 
