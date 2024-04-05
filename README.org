@@ -4,14 +4,27 @@
 #+LANGUAGE: en
 #+OPTIONS: title:t author:t email:nil toc:nil num:nil timestamp:nil
 
+* REPL
+
+on love.load 
+#+begin_example
+(local repl (require :stdio))
+(repl.start)
+#+end_example
+
+on compile
+
+#+begin_example
+lua_modules/bin/fennel -c patches/stdio.fnl > src/stdio.lua
+#+end_example
 * Project [2/5]
 - [X] port to love 11.5
-- [X] set up repl for live coding
 - [ ] replace src/vendor with luarocks
   - gamestate+timer->hump
   - also tween anim8 HC
 - [ ] port src/hawk to fennel
 - [ ] port game to mobile [[https://github.com/love2d/love-android][apk]]
+
 * Game
 
 Journey  to the  Center of  Hawkthorne is  2d platformer  is based  on

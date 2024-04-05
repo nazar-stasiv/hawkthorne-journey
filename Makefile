@@ -117,7 +117,6 @@ patch: deps
 	wget -O lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua https://github.com/drhayes/TESound/raw/master/tesound.lua
 	patch -d lua_modules/share/lua/$(LUA_VERSION) -i tesound.patch
 	patch -d lua_modules/share/lua/$(LUA_VERSION) -i cliargs.patch
-	lua_modules/bin/fennel -c patches/stdio.fnl > lua_modules/share/lua/$(LUA_VERSION)/stdio.lua
 
 run: $(tilemaps) $(LOVE)
 	LUA_PATH=$(LUA_PATH) $(LOVE) src
@@ -244,6 +243,7 @@ clean:
 	rm -f lua
 	rm -f luarocks
 	rm -f game-dev-1.rockspec
+
 reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/*.json
 	rm -rf $(XDG_DATA_HOME)/love/ ~/.local/share/love/

@@ -22,14 +22,9 @@
   (event channel) (looper event channel))
 
 {:start (fn start-repl []
-          (let [code (love.filesystem.read "lua_modules/share/lua/5.1/stdio.fnl")
-                luac (if code
-                         (love.filesystem.newFileData
-                          (fennel.compileString code) "io")
-                         (love.filesystem.read "lua_modules/share/lua/5.1/stdio.lua"))
-                thread (love.thread.newThread luac)
+          (let [thread (love.thread.newThread "stdio.lua")
                 io-channel (love.thread.newChannel)
-                coro (coroutine.create fennel.repl)
+                coro (coroutine.create #(fennel.repl))
                 options {:readChunk (fn [{: stack-size}]
                                       (io-channel:push [:read (< 0 stack-size)])
                                       (coroutine.yield))

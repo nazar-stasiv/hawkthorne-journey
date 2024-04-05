@@ -17,5 +17,3 @@ end
 table.insert(package.loaders, make_love_searcher(_G))
 table.insert(fennel["macro-searchers"], make_love_searcher("_COMPILER"))
 local wrap = require 'wrap'
-
-
