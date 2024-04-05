@@ -20,12 +20,13 @@
   - TastyText  2.0
   - utf8.lua
 - replace src/vendor/*.lua with luarocks
-- implement love.graphics.touchscreen events  and onscreen controls to
-  run love file on mobile with official [[https://github.com/love2d/love-android][apk]]
+  - gamestate come from hump
+  - timer come from hump
 - needs tiled (to edit tmx), tmx2lua  to load maps as modules, love to
   run, and fennel-mode for repl and code hotload
-- make count shows antifennel (excl. src/maps) progress
-- port to DIY [[https://lutro.libretro.com][consoles]]
+- implement love.graphics.touchscreen events  and onscreen controls to
+  run love file on mobile with official [[https://github.com/love2d/love-android][apk]]
+- also port to DIY [[https://lutro.libretro.com][consoles]]
 * Game
 
 Journey  to the  Center of  Hawkthorne is  2d platformer  is based  on

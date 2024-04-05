@@ -111,7 +111,8 @@ deps:
 	luarocks --lua-version $(LUA_VERSION) install luasocket
 	luarocks --lua-version $(LUA_VERSION) install fennel
 	luarocks --lua-version $(LUA_VERSION) install lume
-
+	wget -O lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua https://github.com/drhayes/TESound/raw/master/tesound.lua
+	patch lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua < patches/tesound.patch
 run: $(tilemaps) $(LOVE)
 	LUA_PATH=$(LUA_PATH) $(LOVE) src
 
