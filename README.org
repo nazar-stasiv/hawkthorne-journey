@@ -10,13 +10,10 @@
 - provision  [[https://love2d.org/wiki/Category:Libraries][libraries]] with  luarocks to  save (see  src/vendor) about
   2kloc
   - [[http://vrld.github.com/HardonCollider][HardonCollider]]
-  - JSON4Lua 0.9.40
-  - middleclass 2.0
   - anim8 1.0.0
   - inspect 1.2.1
   - tween 1.0.1
 - fetch few others from github s.t. luarock is aware about it
-  - TEsound 1.3
   - TastyText  2.0
   - utf8.lua
 - replace src/vendor/*.lua with luarocks
