@@ -1,5 +1,5 @@
 local middle = require 'hawk/middleclass'
-local json = require 'hawk/json'
+local json = require 'json'
 local i18n = require 'hawk/i18n'
 local gamesave = require 'hawk/gamesave'
 local config = require 'hawk/config'

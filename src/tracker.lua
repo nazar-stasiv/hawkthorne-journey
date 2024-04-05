@@ -1,5 +1,5 @@
 local utils = require 'utils'
-local json = require 'hawk/json'
+local json = require 'json'
 
 local Tracker = {}
 Tracker.__index = Tracker

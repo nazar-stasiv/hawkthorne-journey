@@ -1,4 +1,4 @@
-local json = require 'hawk/json'
+local json = require 'json'
 local middle = require 'hawk/middleclass'
 
 local Datastore = middle.class('Datastore')

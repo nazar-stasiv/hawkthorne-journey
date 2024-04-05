@@ -42,7 +42,7 @@ db:flush() -- persist
 
 ## assets
 
-HAWK provides simple assert management. Never create multiple images again
+HAWK provides simple asset management. Never create multiple images again
 
 ## scene
 
@@ -57,12 +57,3 @@ HAWK provides configuration into your game
 HAWK supports loading and drawing tile-based maps out of the box. We currently
 only support TMX maps, but plan to add more in the future.
 
-## json
-
-HAWK provides JSON support using JSON4Lua version 0.9.40
-
-```lua
-local json = require 'hawk/json'
-local contents = {"foo", "bar"}
-json.encode(contents)
-```

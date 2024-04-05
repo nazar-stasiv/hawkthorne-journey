@@ -5,7 +5,7 @@ local Timer = require('vendor/timer')
 local Quest = require 'quest'
 local quests = require 'npcs/quests/frankiequest'
 local utils = require 'utils'
-local json  = require 'hawk/json'
+local json  = require 'json'
 local app = require 'app'
 
 return {

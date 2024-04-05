@@ -1,4 +1,4 @@
-local json  = require 'hawk/json'
+local json  = require 'json'
 local collision  = require 'hawk/collision'
 local queue = require 'queue'
 local Timer = require 'vendor/timer'

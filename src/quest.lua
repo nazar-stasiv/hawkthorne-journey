@@ -2,7 +2,7 @@
 
 local Dialog = require 'dialog'
 local prompt = require 'prompt'
-local json  = require 'hawk/json'
+local json  = require 'json'
 local app = require 'app'
 local utils = require 'utils'
 local Item = require 'items/item'

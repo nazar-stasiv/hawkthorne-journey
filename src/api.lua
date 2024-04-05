@@ -1,5 +1,5 @@
 local middle = require "hawk/middleclass"
-local json = require "hawk/json"
+local json = require "json"
 local http = require "socket.http"
 local ltn12 = require "ltn12"
 

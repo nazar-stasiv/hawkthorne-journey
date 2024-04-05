@@ -5,7 +5,7 @@ local ltn12 = require "ltn12"
 local os = require "os"
 
 local middle = require 'hawk/middleclass'
-local json = require 'hawk/json'
+local json = require 'json'
 
 local osx = require 'hawk/sparkle/osx'
 local windows = require 'hawk/sparkle/windows'
