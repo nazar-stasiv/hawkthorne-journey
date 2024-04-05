@@ -4,7 +4,7 @@ local http = require "socket.http"
 local ltn12 = require "ltn12"
 local os = require "os"
 
-local middle = require 'hawk/middleclass'
+local middle = require 'middleclass'
 local json = require 'json'
 
 local osx = require 'hawk/sparkle/osx'

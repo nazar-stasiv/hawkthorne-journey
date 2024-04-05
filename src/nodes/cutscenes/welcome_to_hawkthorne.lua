@@ -2,7 +2,7 @@ local anim8 = require 'vendor/anim8'
 local gamestate = require 'vendor/gamestate'
 local tween = require 'vendor/tween'
 local sound = require 'vendor/TEsound'
-local middle = require 'hawk/middleclass'
+local middle = require 'middleclass'
 
 local camera = require 'camera'
 local dialog = require 'dialog'

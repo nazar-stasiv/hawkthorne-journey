@@ -1,4 +1,4 @@
-local middle = require 'hawk/middleclass'
+local middle = require 'middleclass'
 local machine = require 'hawk/statemachine'
 
 local app = require 'app'

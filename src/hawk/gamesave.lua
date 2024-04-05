@@ -1,4 +1,4 @@
-local middle = require 'hawk/middleclass'
+local middle = require 'middleclass'
 local store = require 'hawk/store'
 
 local SCHEMA = 1

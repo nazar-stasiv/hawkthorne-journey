@@ -1,5 +1,5 @@
 local machine = require 'hawk/statemachine'
-local middle = require 'hawk/middleclass'
+local middle = require 'middleclass'
 
 local _stoplight = {
   { name = 'warn',  from = 'green',  to = 'yellow' },

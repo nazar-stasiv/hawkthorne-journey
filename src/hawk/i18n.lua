@@ -1,5 +1,5 @@
 local json = require 'json'
-local middle = require 'hawk/middleclass'
+local middle = require 'middleclass'
 
 local i18n = middle.class("i18n")
 

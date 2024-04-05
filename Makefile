@@ -104,7 +104,7 @@ deps:
 	luarocks --lua-version $(LUA_VERSION) init
 	luarocks --lua-version $(LUA_VERSION) install hc
 	luarocks --lua-version $(LUA_VERSION) install JSON4Lua
-	luarocks --lua-version $(LUA_VERSION) install middleclass
+	luarocks --lua-version $(LUA_VERSION) install middleclass 3.0.0-1
 	luarocks --lua-version $(LUA_VERSION) install anim8
 	luarocks --lua-version $(LUA_VERSION) install inspect
 	luarocks --lua-version $(LUA_VERSION) install tween
