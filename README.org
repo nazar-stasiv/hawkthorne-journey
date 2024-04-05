@@ -11,7 +11,6 @@
   2kloc
   - [[http://vrld.github.com/HardonCollider][HardonCollider]]
   - anim8 1.0.0
-  - inspect 1.2.1
   - tween 1.0.1
 - fetch few others from github s.t. luarock is aware about it
   - TastyText  2.0

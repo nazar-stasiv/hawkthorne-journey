@@ -124,7 +124,7 @@ end
 ------------------------------------------------------------
 --   TABLE UTILITIES
 ------------------------------------------------------------
-local inspector = require('vendor/inspect')
+local inspector = require('inspect')
 
 -- pretty print objects
 function utils.inspect(obj,n)

@@ -111,10 +111,13 @@ deps:
 	luarocks --lua-version $(LUA_VERSION) install luasocket
 	luarocks --lua-version $(LUA_VERSION) install fennel
 	luarocks --lua-version $(LUA_VERSION) install lume
+	luarocks remove lua_cliargs
 	luarocks --lua-version $(LUA_VERSION) install lua_cliargs 2.0-1
 	patch lua_modules/share/lua/$(LUA_VERSION)/cliargs.lua < patches/cliargs.patch
+	rm lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua
 	wget -O lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua https://github.com/drhayes/TESound/raw/master/tesound.lua
 	patch lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua < patches/tesound.patch
+	luarocks --lua-version $(LUA_VERSION) install inspect 1.2-2
 run: $(tilemaps) $(LOVE)
 	LUA_PATH=$(LUA_PATH) $(LOVE) src
 
