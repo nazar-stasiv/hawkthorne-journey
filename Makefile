@@ -11,7 +11,11 @@ LIBS := $(wildcard lib/*)
 LUA := $(wildcard *.lua)
 SRC := $(wildcard *.fnl)
 
-count: ; cloc src
+LUA := "/usr/bin/luajit"
+LUA_VERSION := "5.1"
+LUA_PATH := "$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?.lua;$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?/init.lua;${LUA_PATH}"
+
+count: ; cloc . --exclude-list-file=.gitignore
 
 LOVEFILE=releases/$(NAME)-$(VERSION).love
 
@@ -97,20 +101,20 @@ build/hawkthorne.love: $(tilemaps) src/*
 		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
 
 deps:
-	luarocks --lua-version 5.1 config local_by_default true
-	luarocks --lua-version 5.1 --local install hc
-	luarocks --lua-version 5.1 --local install JSON4Lua
-	luarocks --lua-version 5.1 --local install middleclass
-	luarocks --lua-version 5.1 --local install anim8
-	luarocks --lua-version 5.1 --local install inspect
-	luarocks --lua-version 5.1 --local install tween
-	luarocks --lua-version 5.1 --local install lunatest
-	luarocks --lua-version 5.1 --local install luasocket
-	luarocks --lua-version 5.1 --local install fennel
-	luarocks --lua-version 5.1 --local install lume
+	luarocks --lua-version $(LUA_VERSION) init
+	luarocks --lua-version $(LUA_VERSION) install hc
+	luarocks --lua-version $(LUA_VERSION) install JSON4Lua
+	luarocks --lua-version $(LUA_VERSION) install middleclass
+	luarocks --lua-version $(LUA_VERSION) install anim8
+	luarocks --lua-version $(LUA_VERSION) install inspect
+	luarocks --lua-version $(LUA_VERSION) install tween
+	luarocks --lua-version $(LUA_VERSION) install lunatest
+	luarocks --lua-version $(LUA_VERSION) install luasocket
+	luarocks --lua-version $(LUA_VERSION) install fennel
+	luarocks --lua-version $(LUA_VERSION) install lume
 
 run: $(tilemaps) $(LOVE)
-	$(LOVE) src
+	LUA_PATH=$(LUA_PATH) $(LOVE) src
 
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<
