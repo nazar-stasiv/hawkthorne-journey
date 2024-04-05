@@ -7,15 +7,14 @@ AUTHOR="Your Name"
 DESCRIPTION="Minimal setup for trying out Phil Hagelberg's fennel/love game design process."
 GITHUB_USERNAME := "liberodark"
 GITHUB_PAT := "hawkthorne-journey"
-LIBS := $(wildcard lib/*)
-LUA := $(wildcard *.lua)
-SRC := $(wildcard *.fnl)
+LIBS := $(wildcard lua_modules/share/lua/5.1/*)
+LUA := $(wildcard src/*.lua)
+SRC := $(wildcard src/*.fnl)
 
-LUA := "/usr/bin/luajit"
 LUA_VERSION := "5.1"
 LUA_PATH := "$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?.lua;$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?/init.lua;${LUA_PATH}"
 
-count: ; cloc . --exclude-list-file=.gitignore
+count: ; cloc src --exclude-list-file=.gitignore
 
 LOVEFILE=releases/$(NAME)-$(VERSION).love
 
@@ -233,7 +232,11 @@ clean:
 	rm -rf src/maps/*.lua
 	rm -rf $(OSXAPP)
 	rm -rf releases/*
-
+	rm -rf lua_modules
+	rm -rf .luarocks
+	rm -f lua
+	rm -f luarocks
+	rm -f game-dev-1.rockspec
 reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/*.json
 	rm -rf $(XDG_DATA_HOME)/love/ ~/.local/share/love/
