@@ -29,7 +29,7 @@
 (fn love.load [arg]
   (when (not (= (type love._version) :string))
     (error "invalid version label"))
-  (repl.start)
+  ;;(repl.start)
   (local version (utils.split (love._version:gsub "%." "/") "/"))
   (local major (tonumber (. version 1)))
   (local minor (tonumber (. version 2)))

@@ -22,11 +22,11 @@
   (event channel) (looper event channel))
 
 {:start (fn start-repl []
-          (let [code (love.filesystem.read "lib/stdio.fnl")
+          (let [code (love.filesystem.read "lua_modules/share/lua/5.1/stdio.fnl")
                 luac (if code
                          (love.filesystem.newFileData
                           (fennel.compileString code) "io")
-                         (love.filesystem.read "lib/stdio.lua"))
+                         (love.filesystem.read "lua_modules/share/lua/5.1/stdio.lua"))
                 thread (love.thread.newThread luac)
                 io-channel (love.thread.newChannel)
                 coro (coroutine.create fennel.repl)
@@ -37,7 +37,7 @@
                                      (io-channel:push [:write vals]))
                          :onError (fn [errtype err]
                                     (io-channel:push [:write [err]]))
-                         :moduleName "lib.fennel"}]
+                         :moduleName "fennel"}]
             ;; this thread will send "eval" events for us to consume:
             (coroutine.resume coro options)
             (thread:start "eval" io-channel)

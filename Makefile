@@ -112,11 +112,12 @@ deps:
 	luarocks --lua-version $(LUA_VERSION) install inspect 1.2-2
 
 patch: deps
-	cp patches/* lua_modules/share/lua/$(LUA_VERSION)/
+	cp patches/*.patch lua_modules/share/lua/$(LUA_VERSION)/
 	rm -f lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua
 	wget -O lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua https://github.com/drhayes/TESound/raw/master/tesound.lua
 	patch -d lua_modules/share/lua/$(LUA_VERSION) -i tesound.patch
 	patch -d lua_modules/share/lua/$(LUA_VERSION) -i cliargs.patch
+	lua_modules/bin/fennel -c patches/stdio.fnl > lua_modules/share/lua/$(LUA_VERSION)/stdio.lua
 
 run: $(tilemaps) $(LOVE)
 	LUA_PATH=$(LUA_PATH) $(LOVE) src
