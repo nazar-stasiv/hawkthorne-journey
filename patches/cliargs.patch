@@ -1,0 +1,26 @@
+diff --git a/cliargs.lua b/cliargs.lua
+index 85cb4eb..be87ac1 100644
+--- a/cliargs.lua
++++ b/cliargs.lua
+@@ -266,11 +266,10 @@ end
+ --- ### Returns
+ --- 1. a table containing the keys specified when the arguments were defined along with the parsed values,
+ --- or nil + error message (--help option is considered an error and returns nil + help message)
+-function cli:parse(noprint, dump)
+-  arg = arg or {}
++function cli:parse(arg, noprint, dump)
+   local args = {}
+   for k,v in pairs(arg) do args[k] = v end  -- copy global args local
+-  
++
+   -- starts with --help? display the help listing and abort!
+   if args[1] and (args[1] == "--help" or args[1] == "-h") then
+     return nil, self:print_help(noprint)
+@@ -341,7 +340,6 @@ function cli:parse(noprint, dump)
+         return cli_error("unknown/bad flag; " .. opt, noprint)
+       end
+     end
+-    
+     entry.value = optval
+   end
+ 
