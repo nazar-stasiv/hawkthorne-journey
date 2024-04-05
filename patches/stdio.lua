@@ -1,4 +1,4 @@
-local fennel = require("lib.fennel")
+local fennel = require("fennel")
 require("love.event")
 local function prompt(cont_3f)
   local function _1_()

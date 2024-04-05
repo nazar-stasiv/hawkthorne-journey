@@ -1,4 +1,4 @@
-(local fennel (require :lib.fennel))
+(local fennel (require :fennel))
 (require :love.event)
 
 ;; This module exists in order to expose stdio over a channel so that it

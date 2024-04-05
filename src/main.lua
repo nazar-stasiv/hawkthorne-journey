@@ -1,6 +1,6 @@
 -- bootstrap the compiler
-local fennel = require("lib.fennel").install({correlate=true,
-                                              moduleName="lib.fennel"})
+local fennel = require("fennel").install({correlate=true,
+					  moduleName="fennel"})
 
 local make_love_searcher = function(env)
    return function(module_name)

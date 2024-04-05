@@ -70,7 +70,7 @@ upload: uploadlinux uploadmac uploadwindows
 
 release: linux mac windows upload cleansrc
 
-.PHONY: clean contributors run productionize deploy love maps appcast lint count deps
+.PHONY: clean contributors run productionize deploy love maps appcast lint count deps patch
 
 UNAME := $(shell uname)
 
@@ -105,19 +105,19 @@ deps:
 	luarocks --lua-version $(LUA_VERSION) install JSON4Lua
 	luarocks --lua-version $(LUA_VERSION) install middleclass 3.0.0-1
 	luarocks --lua-version $(LUA_VERSION) install anim8
-	luarocks --lua-version $(LUA_VERSION) install inspect
 	luarocks --lua-version $(LUA_VERSION) install tween
 	luarocks --lua-version $(LUA_VERSION) install lunatest
-	luarocks --lua-version $(LUA_VERSION) install luasocket
 	luarocks --lua-version $(LUA_VERSION) install fennel
-	luarocks --lua-version $(LUA_VERSION) install lume
-	luarocks remove lua_cliargs
 	luarocks --lua-version $(LUA_VERSION) install lua_cliargs 2.0-1
-	patch lua_modules/share/lua/$(LUA_VERSION)/cliargs.lua < patches/cliargs.patch
-	rm lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua
-	wget -O lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua https://github.com/drhayes/TESound/raw/master/tesound.lua
-	patch lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua < patches/tesound.patch
 	luarocks --lua-version $(LUA_VERSION) install inspect 1.2-2
+
+patch: deps
+	cp patches/* lua_modules/share/lua/$(LUA_VERSION)/
+	rm -f lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua
+	wget -O lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua https://github.com/drhayes/TESound/raw/master/tesound.lua
+	patch -d lua_modules/share/lua/$(LUA_VERSION) -i tesound.patch
+	patch -d lua_modules/share/lua/$(LUA_VERSION) -i cliargs.patch
+
 run: $(tilemaps) $(LOVE)
 	LUA_PATH=$(LUA_PATH) $(LOVE) src
 

@@ -1,5 +1,5 @@
-(local fennel (require :lib.fennel))
-(local repl (require :lib.stdio))
+(local fennel (require :fennel))
+(local repl (require :stdio))
 (local utils (require :utils))
 (local app (require :app))
 (local tween (require :vendor/tween))
@@ -29,6 +29,7 @@
 (fn love.load [arg]
   (when (not (= (type love._version) :string))
     (error "invalid version label"))
+  (repl.start)
   (local version (utils.split (love._version:gsub "%." "/") "/"))
   (local major (tonumber (. version 1)))
   (local minor (tonumber (. version 2)))

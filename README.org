@@ -1,28 +1,17 @@
-#+TITLE:
-#+AUTHOR:
-#+EMAIL:
+#+TITLE: Journey to the Center of Hawkthorne
+#+AUTHOR: https://projecthawkthorne.com
+#+EMAIL: nazar@autistici.org
 #+LANGUAGE: en
 #+OPTIONS: title:t author:t email:nil toc:nil num:nil timestamp:nil
 
-* Project
-- get rid of src/vendor/glove.lua
-- port to love 11.5 (e.g newScreenshot->captureScreenshot)
-- provision  [[https://love2d.org/wiki/Category:Libraries][libraries]] with  luarocks to  save (see  src/vendor) about
-  2kloc
-  - [[http://vrld.github.com/HardonCollider][HardonCollider]]
-  - anim8 1.0.0
-  - tween 1.0.1
-- fetch few others from github s.t. luarock is aware about it
-  - TastyText  2.0
-  - utf8.lua
-- replace src/vendor/*.lua with luarocks
-  - gamestate come from hump
-  - timer come from hump
-- needs tiled (to edit tmx), tmx2lua  to load maps as modules, love to
-  run, and fennel-mode for repl and code hotload
-- implement love.graphics.touchscreen events  and onscreen controls to
-  run love file on mobile with official [[https://github.com/love2d/love-android][apk]]
-- also port to DIY [[https://lutro.libretro.com][consoles]]
+* Project [2/5]
+- [X] port to love 11.5
+- [X] set up repl for live coding
+- [ ] replace src/vendor with luarocks
+  - gamestate+timer->hump
+  - also tween anim8 HC
+- [ ] port src/hawk to fennel
+- [ ] port game to mobile [[https://github.com/love2d/love-android][apk]]
 * Game
 
 Journey  to the  Center of  Hawkthorne is  2d platformer  is based  on
