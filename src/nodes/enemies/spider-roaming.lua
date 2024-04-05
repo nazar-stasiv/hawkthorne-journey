@@ -1,4 +1,4 @@
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 
 --[[ 
   This object represents a spider (sprites courtesy of reddfawks)

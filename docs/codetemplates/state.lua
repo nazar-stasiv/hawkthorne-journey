@@ -5,7 +5,7 @@
 local Gamestate = require 'vendor/gamestate'
 local fonts = require 'fonts'
 local window = require 'window'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 
 --instantiate this gamestate
 local state = Gamestate.new()

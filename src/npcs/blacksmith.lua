@@ -1,9 +1,8 @@
 -- includes
 local Prompt = require 'prompt'
 local Timer = require 'vendor/timer'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Gamestate = require 'vendor/gamestate'
-local sound = require 'vendor/TEsound'
 local controls = require('inputcontroller').get()
 local NodeClass = require('nodes/npc')
 

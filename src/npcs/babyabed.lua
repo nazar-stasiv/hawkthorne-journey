@@ -1,7 +1,7 @@
 -- inculdes
 
 local Timer = require 'vendor/timer'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Dialog = require 'dialog'
 
 local function playSfx(npc, song)

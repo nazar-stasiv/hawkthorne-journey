@@ -2,7 +2,7 @@
 local Gamestate = require 'vendor/gamestate'
 local fonts = require 'fonts'
 local window = require 'window'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Item = require 'items/item'
 local camera = require 'camera'
 local Prompt = require 'prompt'

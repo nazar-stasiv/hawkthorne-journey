@@ -1,7 +1,7 @@
 local anim8 = require 'vendor/anim8'
 local player = require 'player'
 local utils = require 'utils'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local window = require 'window'
 
 local Vehicle = {}

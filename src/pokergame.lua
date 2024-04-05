@@ -8,7 +8,7 @@ local Dialog = require 'dialog'
 local camera = require 'camera'
 local utils = require 'utils'
 local state = Gamestate.new()
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local cardutils = require 'cardutils'
 
 function state:init()

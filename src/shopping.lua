@@ -1,5 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Item = require 'items/item'
 local window = require 'window'
 local camera = require 'camera'

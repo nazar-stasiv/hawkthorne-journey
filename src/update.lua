@@ -2,7 +2,7 @@ local app = require 'app'
 
 local sparkle = require 'hawk/sparkle'
 local middle = require 'middleclass'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 

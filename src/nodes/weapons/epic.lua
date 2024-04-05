@@ -13,7 +13,7 @@ local camera = require 'camera'
 local utils = require 'utils'
 local Projectile = require 'nodes/projectile'
 local gamestate = require 'vendor/gamestate'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 
 return {
   hand_x = 15,

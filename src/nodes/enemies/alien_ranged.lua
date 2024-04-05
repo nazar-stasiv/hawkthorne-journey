@@ -2,7 +2,7 @@ local Enemy = require 'nodes/enemy'
 local gamestate = require 'vendor/gamestate'
 local Projectile = require 'nodes/projectile'
 local Timer = require 'vendor/timer'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Quest = require 'quest'
 
 return {

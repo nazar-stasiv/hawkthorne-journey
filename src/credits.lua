@@ -4,7 +4,7 @@ local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local fonts = require 'fonts'
 local camera = require 'camera'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local state = Gamestate.new()
 
 function state:init()

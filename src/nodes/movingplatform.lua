@@ -38,7 +38,7 @@ local collision  = require 'hawk/collision'
 local Bspline = require 'vendor/bspline'
 local game = require 'game'
 local gs = require 'vendor/gamestate'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local options = require 'options'
 local utils = require 'utils'
 

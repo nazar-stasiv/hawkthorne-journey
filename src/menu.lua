@@ -1,4 +1,4 @@
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 
 local menu = {}
 menu.__index = menu

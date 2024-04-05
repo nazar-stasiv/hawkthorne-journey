@@ -3,7 +3,7 @@ local Level = require 'level'
 local window = require 'window'
 local fonts = require 'fonts'
 local background = require 'selectbackground'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local character = require 'character'
 local controls = require('inputcontroller').get()
 

@@ -2,7 +2,7 @@ local anim8 = require 'vendor/anim8'
 local app = require 'app'
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Timer = require 'vendor/timer'
 
 local HiddenDoorTrigger = {}

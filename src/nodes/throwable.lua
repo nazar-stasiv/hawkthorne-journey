@@ -1,6 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local window = require 'window'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local utils = require 'utils'
 
 local Throwable = {}

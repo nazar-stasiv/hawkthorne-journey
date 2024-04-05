@@ -1,5 +1,5 @@
 local Enemy = require 'nodes/enemy'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Timer = require 'vendor/timer'
 local Projectile = require 'nodes/projectile'
 local Sprite = require 'nodes/sprite'

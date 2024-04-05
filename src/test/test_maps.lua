@@ -1,7 +1,7 @@
 local lunatest = require "lunatest"
 local controls = require("inputcontroller").get()
 local Level = require "level"
-local Sound = require 'vendor/TEsound'
+local Sound = require 'TEsound'
 local utils = require "utils"
 
 local TS = {}

@@ -2,7 +2,7 @@
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
 local fonts = require 'fonts'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Cauldron = {}
 Cauldron.__index = Cauldron
 

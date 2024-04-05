@@ -1,6 +1,6 @@
 local Gamestate = require 'vendor/gamestate'
 local Prompt = require 'prompt'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Alarm = {}
 Alarm.__index = Alarm
 -- Nodes with 'isInteractive' are nodes which the player can interact with, but not pick up in any way

@@ -6,7 +6,7 @@ local fonts = require 'fonts'
 local Gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local Player = require 'player'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local VerticalParticles = require "verticalparticles"
 local window = require 'window'
 

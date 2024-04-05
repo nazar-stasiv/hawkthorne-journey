@@ -3,7 +3,7 @@
 -- Represents a generic ranged weapon a player can wield or pick up
 -- adapted from code originally written by NimbusBP1729
 -----------------------------------------------
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local anim8 = require 'vendor/anim8'
 local Timer = require 'vendor/timer'
 local game = require 'game'

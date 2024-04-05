@@ -5,7 +5,7 @@ local utils = require 'utils'
 local Timer = require 'vendor/timer'
 local window = require 'window'
 local Player = require 'player'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Gamestate = require 'vendor/gamestate'
 
 local Projectile = {}

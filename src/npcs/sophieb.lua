@@ -1,7 +1,7 @@
 -- inculdes
 
 local Timer = require 'vendor/timer'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
  
 local function playSong(npc, level, time, song)
   npc.state = "playing"

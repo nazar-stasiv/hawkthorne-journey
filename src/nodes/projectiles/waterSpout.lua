@@ -1,6 +1,6 @@
 local game = require 'game'
 local Timer = require 'vendor/timer'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 
 return{
   name = 'waterSpout',

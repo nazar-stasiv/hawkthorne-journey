@@ -1,4 +1,4 @@
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Gamestate = require 'vendor/gamestate'
 local Sprite = require 'nodes/sprite'
 local Timer = require 'vendor/timer'

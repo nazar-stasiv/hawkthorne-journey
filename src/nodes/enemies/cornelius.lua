@@ -1,6 +1,6 @@
 local Enemy = require 'nodes/enemy'
 local gamestate = require 'vendor/gamestate'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Timer = require 'vendor/timer'
 local Fireball = require 'nodes/fire_cornelius_big'
 local utils = require 'utils'

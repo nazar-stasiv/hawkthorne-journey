@@ -1,7 +1,7 @@
 local gamestate = require 'vendor/gamestate'
 local Level = require 'level'
 local anim8 = require 'vendor/anim8'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Prompt = require 'prompt'
 local utils = require 'utils'
 local app = require 'app'

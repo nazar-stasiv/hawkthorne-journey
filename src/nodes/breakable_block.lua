@@ -1,7 +1,7 @@
 local collision  = require 'hawk/collision'
 local Timer = require 'vendor/timer'
 local anim8 = require 'vendor/anim8'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Wall = {}
 Wall.__index = Wall
 Wall.isWall = true

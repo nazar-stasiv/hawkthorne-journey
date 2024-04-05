@@ -1,6 +1,6 @@
 -- inculdes
 local Dialog = require 'dialog'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local prompt = require 'prompt'
 local Timer = require('vendor/timer')
 local Quest = require 'quest'

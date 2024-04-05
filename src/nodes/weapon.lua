@@ -5,7 +5,7 @@
 ---- the only action that should play once is the animation for ing your weapon
 -- Created by NimbusBP1729
 -----------------------------------------------
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local anim8 = require 'vendor/anim8'
 local game = require 'game'
 local collision  = require 'hawk/collision'

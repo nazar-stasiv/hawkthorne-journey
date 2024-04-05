@@ -4,7 +4,7 @@ local utils = require 'utils'
 
 local Gamestate = require 'vendor/gamestate'
 local camera = require 'camera'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local fonts = require 'fonts'
 local state = Gamestate.new()
 local Player = require 'player'

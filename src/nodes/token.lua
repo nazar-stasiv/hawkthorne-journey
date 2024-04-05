@@ -1,6 +1,6 @@
 local collision  = require 'hawk/collision'
 local anim8 = require 'vendor/anim8'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local game = require 'game'
 local utils = require 'utils'
 

@@ -1,6 +1,6 @@
 local Timer = require 'vendor/timer'
 local Enemy = require 'nodes/enemy'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Gamestate = require 'vendor/gamestate'
 
 return {

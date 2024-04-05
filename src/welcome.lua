@@ -4,7 +4,7 @@ local controls  = require('inputcontroller').get()
 local fonts     = require 'fonts'
 local Gamestate = require 'vendor/gamestate'
 local menu      = require 'menu'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local window    = require 'window'
 local Timer = require 'vendor/timer'
 

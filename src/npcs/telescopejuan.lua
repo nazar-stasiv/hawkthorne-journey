@@ -1,6 +1,6 @@
 local Prompt = require 'prompt'
 local Timer = require 'vendor/timer'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local Gamestate = require 'vendor/gamestate'
 local Quest = require 'quest'
 local quests = require 'npcs/quests/telescopejuanquest'

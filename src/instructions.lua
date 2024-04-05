@@ -1,7 +1,7 @@
 local Gamestate = require 'vendor/gamestate'
 local window = require 'window'
 local camera = require 'camera'
-local sound = require 'vendor/TEsound'
+local sound = require 'TEsound'
 local fonts = require 'fonts'
 local controls = require('inputcontroller').get()
 local VerticalParticles = require "verticalparticles"
