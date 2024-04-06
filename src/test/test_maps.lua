@@ -160,7 +160,7 @@ local function checkDoor(door, sounds)
           --print(string.format("Warning: Target door name is unspecified - %s.", door:getSourceId()))
           targetDoorName = "main"
         else
-          fail(string.format("Target door name into the same level is unspecified - %s.", door:getSourceId()))
+          lunatest.fail(string.format("Target door name into the same level is unspecified - %s.", door:getSourceId()))
         end
       end
       lunatest.assert_true(targetDoorName ~= "", string.format("Target door name is empty - %s.", door:getSourceId()))
@@ -184,12 +184,12 @@ local function checkDoor(door, sounds)
     local ok, msg = pcall(utils.require, 'items/keys/' .. keyName)
 
     if not ok then
-      fail(string.format("Error loading key '%s'. Referenced from %s - %s.", keyName, door:getSourceId(), msg))
+      lunatest.fail(string.format("Error loading key '%s'. Referenced from %s - %s.", keyName, door:getSourceId(), msg))
     end
     lunatest.assert_not_nil(msg, string.format("Key '%s' not found. Referenced from %s.", keyName, door:getSourceId()))
 
     if door.instant then
-      fail(string.format("Key (%s) not allowed for instant door - %s.", keyName, door:getSourceId()))
+      lunatest.fail(string.format("Key (%s) not allowed for instant door - %s.", keyName, door:getSourceId()))
     end
   end
 end
@@ -221,7 +221,7 @@ function TS.test_doors()
     local ok, msg = pcall(Sound.playSfx, sound)
     if not ok then
       local ids = getSourceIds(nodes)
-      fail(string.format("Error playing sound '%s' (referenced from doors: %s) - %s", sound, ids, msg))
+      lunatest.fail(string.format("Error playing sound '%s' (referenced from doors: %s) - %s", sound, ids, msg))
     end
   end
   Sound.disabled = oldSoundDisabled
@@ -244,7 +244,7 @@ function TS.test_music()
     local ok, msg = pcall(Sound.playMusic, music)
     if not ok then
       local ids = getSourceIds(levels)
-      fail(string.format("Error playing music '%s' (referenced from levels: %s) - %s", music, ids, msg))
+      lunatest.fail(string.format("Error playing music '%s' (referenced from levels: %s) - %s", music, ids, msg))
     end
   end
   Sound.stopMusic()
@@ -286,7 +286,7 @@ function TS.test_breakable_blocks()
     local ok, msg = pcall(Sound.playSfx, sound)
     if not ok then
       local ids = getSourceIds(nodes)
-      fail(string.format("Error playing sound '%s' (referenced from breakable_blocks: %s) - %s", sound, ids, msg))
+      lunatest.fail(string.format("Error playing sound '%s' (referenced from breakable_blocks: %s) - %s", sound, ids, msg))
     end
   end
   Sound.disabled = oldSoundDisabled

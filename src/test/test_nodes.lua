@@ -46,7 +46,7 @@ local function loadNode(type, name, directory)
   local Node = require('nodes/' .. type)
   local ok, msg = pcall(Node.new, node, collider)
   if not ok then
-    fail(string.format("Error loading %s '%s' - %s", type, name, msg))
+    lunatest.fail(string.format("Error loading %s '%s' - %s", type, name, msg))
   end
   lunatest.assert_not_nil(msg, string.format("%s '%s' returned nil", type, name))
   return msg
