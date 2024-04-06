@@ -14,7 +14,7 @@ OUT := $(patsubst src/%.fnl,src/%.lua,$(SRC))
 FENNEL := fennel --lua lua
 LUA_VERSION := "5.1"
 LUA_PATH := "$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?.lua;$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?/init.lua;${LUA_PATH}"
-LUA_CPATH := "$(CURDIR)/lua_modules/lib/lua/$(LUA_VERSION)/?.so;${LUA_CPATH}"
+LUA_CPATH := "$(CURDIR)/lua_modules/lib/lua/$(LUA_VERSION)/?.so;$(CURDIR)/lua_modules/lib/lua/$(LUA_VERSION)/?/?.so;${LUA_CPATH}"
 
 count: ; cloc src --exclude-list-file=.gitignore
 
