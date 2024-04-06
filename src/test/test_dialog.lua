@@ -1,4 +1,5 @@
-local dialog = require "src/dialog"
+local lunatest = require "lunatest"
+local dialog = require "dialog"
 
 -- it should get a shortened version of the current message
 function test_dialog_message()

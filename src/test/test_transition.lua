@@ -1,4 +1,5 @@
-local transition = require "src/transition"
+local lunatest = require "lunatest"
+local transition = require "transition"
 
 -- it should create a new transition
 function test_transition_new()

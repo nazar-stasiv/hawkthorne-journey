@@ -1,4 +1,5 @@
-local mixpanel = require "src/vendor/mixpanel"
+local lunatest = require "lunatest"
+local mixpanel = require "vendor/mixpanel"
 
 --should be -1 for a negative number
 function test_random_id() 

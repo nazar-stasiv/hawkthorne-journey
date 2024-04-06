@@ -1,4 +1,5 @@
-local queue = require("src/queue")
+local lunatest = require "lunatest"
+local queue = require("queue")
 
 -- it should create a new queue
 function test_queue_new()

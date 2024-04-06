@@ -1,4 +1,6 @@
-local character = require "src/character"
+local lunatest = require "lunatest"
+local character = require "character"
+
 
 --Should fail
 function test_pick_unknown_character() 

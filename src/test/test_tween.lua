@@ -1,4 +1,5 @@
-local tween = require "src/vendor/tween"
+local lunatest = require "lunatest"
+local tween = require "vendor/tween"
 
 -- it should handle a zero dt value
 function test_tween_zero_value()

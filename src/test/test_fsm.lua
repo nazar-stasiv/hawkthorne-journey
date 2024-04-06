@@ -1,3 +1,4 @@
+local lunatest = require "lunatest"
 local machine = require 'hawk/statemachine'
 local middle = require 'middleclass'
 

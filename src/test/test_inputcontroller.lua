@@ -1,3 +1,4 @@
+local lunatest = require "lunatest"
 local InputController = require 'inputcontroller'
 
 local DEFAULT_ACTIONMAP = {

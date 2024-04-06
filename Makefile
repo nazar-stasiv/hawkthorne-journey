@@ -112,7 +112,7 @@ deps:
 	luarocks --lua-version $(LUA_VERSION) install middleclass 3.0.0-1
 	luarocks --lua-version $(LUA_VERSION) install anim8
 	luarocks --lua-version $(LUA_VERSION) install tween
-	luarocks --lua-version $(LUA_VERSION) install lunatest
+	luarocks --lua-version $(LUA_VERSION) install lunatest 0.9.5
 	luarocks --lua-version $(LUA_VERSION) install fennel
 	luarocks --lua-version $(LUA_VERSION) install lua_cliargs 2.0-1
 	luarocks --lua-version $(LUA_VERSION) install inspect 1.2-2
@@ -123,9 +123,10 @@ patch: deps
 	wget -O lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua https://github.com/drhayes/TESound/raw/master/tesound.lua
 	patch -d lua_modules/share/lua/$(LUA_VERSION) -i tesound.patch
 	patch -d lua_modules/share/lua/$(LUA_VERSION) -i cliargs.patch
+	patch -d lua_modules/share/lua/$(LUA_VERSION) -i lunatest.patch
 
 run: $(tilemaps) $(LOVE)
-	LUA_PATH=$(LUA_PATH) $(LOVE) src
+	LUA_PATH=$(LUA_PATH) LUA_CPATH=$(LUA_CPATH) $(LOVE) src
 
 src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
 	bin/tmx2lua $<

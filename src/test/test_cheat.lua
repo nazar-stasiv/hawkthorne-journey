@@ -1,10 +1,11 @@
+local lunatest = require "lunatest"
 local Player = require 'player'
 Player.refreshPlayer = function() end -- Stubs refreshPlayer to avoid dependencies
 
 local player = Player.factory() -- Create test player
 
-local cheat = require 'src/cheat'
-local cheatscreen = require 'src/cheatscreen'
+local cheat = require 'cheat'
+local cheatscreen = require 'cheatscreen'
 
 -- it should toggle 'jump_high' on and off with correct values
 function test_toggle_jump_high()

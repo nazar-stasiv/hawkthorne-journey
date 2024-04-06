@@ -1,4 +1,5 @@
-local utils = require "src/utils"
+local lunatest = require "lunatest"
+local utils = require "utils"
 
 --should be -1 for a negative number
 function test_sign_negvative() 

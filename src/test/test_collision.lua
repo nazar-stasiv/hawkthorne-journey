@@ -1,5 +1,6 @@
+local lunatest = require "lunatest"
 local utils = require "utils"
-local collision = require "src/hawk/collision"
+local collision = require "hawk/collision"
 
 local map = {
   width = 10,

@@ -1,3 +1,4 @@
+local lunatest = require "lunatest"
 local HC = require 'vendor/hardoncollider'
 
 local collider = HC(100, nil, nil)

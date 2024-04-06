@@ -1,3 +1,4 @@
+local lunatest = require "lunatest"
 local Player = require 'player'
 Player.refreshPlayer = function() end -- Stubs refreshPlayer to avoid dependencies
 

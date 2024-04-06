@@ -1,6 +1,7 @@
+local lunatest = require "lunatest"
 local json = require "json"
-local tracker = require "src/tracker"
-local player = require "src/player"
+local tracker = require "tracker"
+local player = require "player"
 local HC = require 'vendor/hardoncollider'
 
 function test_filename() 
