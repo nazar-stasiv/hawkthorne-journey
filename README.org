@@ -17,14 +17,13 @@ on compile
 #+begin_example
 lua_modules/bin/fennel -c patches/stdio.fnl > src/stdio.lua
 #+end_example
-* Project [2/5]
+* Project [1/4]
 - [X] port to love 11.5
+- [ ] port to [[https://github.com/libretro/lutro-status][lutro]]
+- [ ] port to fennel
 - [ ] replace src/vendor with luarocks
   - gamestate+timer->hump
   - also tween anim8 HC
-- [ ] port src/hawk to fennel
-- [ ] port game to mobile [[https://github.com/love2d/love-android][apk]]
-
 * Game
 
 Journey  to the  Center of  Hawkthorne is  2d platformer  is based  on
