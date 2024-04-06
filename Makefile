@@ -264,3 +264,10 @@ target/hawkthorne.lutro: target/ludo build/hawkthorne.love
 
 emu: target/hawkthorne.lutro
 	(cd target && ./ludo -L cores/lutro_libretro.so hawkthorne.lutro)
+
+
+wasm: build/hawkthorne.love
+	mkdir -p wasm
+	(cd wasm && npm i love.js)
+	(cd wasm && npx love.js ../build/hawkthorne.love game -c -m 100000000)
+	(cd wasm && python3 -m http.server --bind 127.0.0.1 8080)
