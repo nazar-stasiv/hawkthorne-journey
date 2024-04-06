@@ -75,7 +75,7 @@ upload: uploadlinux uploadmac uploadwindows
 
 release: linux mac windows upload cleansrc
 
-.PHONY: clean contributors run productionize deploy love maps appcast lint count deps patch
+.PHONY: clean contributors run productionize deploy love maps lint count deps patch
 
 UNAME := $(shell uname)
 
@@ -204,11 +204,6 @@ binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86_64.zip
 
 upload: binaries post.md venv
 	venv/bin/python scripts/release.py
-
-appcast: venv build/hawkthorne-osx.zip win64/hawkthorne.exe
-	venv/bin/python scripts/sparkle.py
-	cat sparkle/appcast.json | python -m json.tool > /dev/null
-	venv/bin/python scripts/upload.py / sparkle/appcast.json
 
 social: venv notes.html post.md
 	venv/bin/python scripts/socialize.py post.md
