@@ -21,7 +21,7 @@ local Dialog = require 'dialog'
 local Prompt = require 'prompt'
 local lovetest = require 'test/lovetest'
 
-local testing = false
+local testing = true
 local paused = false
 
 -- Get the current version of the game
