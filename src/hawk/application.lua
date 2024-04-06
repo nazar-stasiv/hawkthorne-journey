@@ -3,7 +3,6 @@ local json = require 'json'
 local i18n = require 'hawk/i18n'
 local gamesave = require 'hawk/gamesave'
 local config = require 'hawk/config'
-local api = require 'api'
 
 local Application = middle.class('Application')
 
@@ -119,12 +118,6 @@ function Application:releaseerrhand(msg)
   end
 
   draw()
-
-  api.report(report_msg, {
-    ['release'] = 'production',
-    ['os'] = love._os,
-    ['version'] = self.config.iteration,
-  })
 
   local e, a, b, c
   while true do
