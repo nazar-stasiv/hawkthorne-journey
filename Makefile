@@ -10,7 +10,8 @@ GITHUB_PAT := "hawkthorne-journey"
 LIBS := $(wildcard lua_modules/share/lua/5.1/*)
 LUA := $(wildcard src/*.lua)
 SRC := $(wildcard src/*.fnl)
-
+OUT := $(patsubst src/%.fnl,src/%.lua,$(SRC))
+FENNEL := fennel --lua lua
 LUA_VERSION := "5.1"
 LUA_PATH := "$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?.lua;$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?/init.lua;${LUA_PATH}"
 
@@ -18,7 +19,10 @@ count: ; cloc src --exclude-list-file=.gitignore
 
 LOVEFILE=releases/$(NAME)-$(VERSION).love
 
-$(LOVEFILE): $(LUA) $(SRC) $(LIBS) assets
+src/%.lua: src/%.fnl
+	${FENNEL} --require-as-include --compile $< >> $@
+
+$(LOVEFILE): $(LUA) $(SRC) $(LIBS) $(OUT)
 	mkdir -p releases/
 	find $^ -type f | LC_ALL=C sort | env TZ=UTC zip -r -q -9 -X $@ -@
 
@@ -96,8 +100,8 @@ love: build/hawkthorne.love
 
 build/hawkthorne.love: $(tilemaps) src/*
 	mkdir -p build
-	cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" \
-		-x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak"
+	(cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" -x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak")
+	(cd lua_modules/share/lua/$(LUA_VERSION)/ && zip --symlinks -q -r -u ../../../../build/hawkthorne.love . -x ".*" -x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak")
 
 deps:
 	luarocks --lua-version $(LUA_VERSION) init
@@ -110,7 +114,7 @@ deps:
 	luarocks --lua-version $(LUA_VERSION) install fennel
 	luarocks --lua-version $(LUA_VERSION) install lua_cliargs 2.0-1
 	luarocks --lua-version $(LUA_VERSION) install inspect 1.2-2
-
+	luarocks --lua-version $(LUA_VERSION) install luasocket
 patch: deps
 	cp patches/*.patch lua_modules/share/lua/$(LUA_VERSION)/
 	rm -f lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua

@@ -26,4 +26,4 @@ sparkle/appcast.json
 /lua_modules
 /.luarocks
 game-dev-1.rockspec
-
+releases
