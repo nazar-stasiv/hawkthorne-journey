@@ -27,3 +27,4 @@ sparkle/appcast.json
 /.luarocks
 game-dev-1.rockspec
 releases
+emu

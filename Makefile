@@ -252,3 +252,16 @@ reset:
 	rm -rf ~/Library/Application\ Support/LOVE/hawkthorne/*.json
 	rm -rf $(XDG_DATA_HOME)/love/ ~/.local/share/love/
 	rm -rf src/maps/*.lua
+
+emu/Ludo-Linux-x11-x86_64-0.17.1.tar.gz:
+	mkdir -p emu
+	wget -c -P emu https://github.com/libretro/ludo/releases/download/v0.17.1/Ludo-Linux-x11-x86_64-0.17.1.tar.gz
+
+emu/ludo: emu/Ludo-Linux-x11-x86_64-0.17.1.tar.gz
+	tar xf emu/Ludo-Linux-x11-x86_64-0.17.1.tar.gz -C emu --strip 1
+
+emu/hawkthorne.lutro: emu/ludo build/hawkthorne.love
+	cp build/hawkthorne.love emu/hawkthorne.lutro
+
+emu: emu/hawkthorne.lutro
+	(cd emu && ./ludo -L cores/lutro_libretro.so hawkthorne.lutro)
