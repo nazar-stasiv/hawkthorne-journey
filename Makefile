@@ -14,6 +14,7 @@ OUT := $(patsubst src/%.fnl,src/%.lua,$(SRC))
 FENNEL := fennel --lua lua
 LUA_VERSION := "5.1"
 LUA_PATH := "$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?.lua;$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?/init.lua;${LUA_PATH}"
+LUA_CPATH := "$(CURDIR)/lua_modules/lib/lua/$(LUA_VERSION)/?.so;${LUA_CPATH}"
 
 count: ; cloc src --exclude-list-file=.gitignore
 
@@ -102,6 +103,7 @@ build/hawkthorne.love: $(tilemaps) src/*
 	mkdir -p build
 	(cd src && zip --symlinks -q -r ../build/hawkthorne.love . -x ".*" -x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak")
 	(cd lua_modules/share/lua/$(LUA_VERSION)/ && zip --symlinks -q -r -u ../../../../build/hawkthorne.love . -x ".*" -x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak")
+	(cd lua_modules/lib/lua/$(LUA_VERSION)/ && zip --symlinks -q -r -u ../../../../build/hawkthorne.love . -x ".*" -x ".DS_Store" -x "*/full_soundtrack.ogg" -x "*.bak")
 
 deps:
 	luarocks --lua-version $(LUA_VERSION) init
@@ -256,13 +258,13 @@ reset:
 
 target/Ludo-Linux-x11-x86_64-0.17.1.tar.gz:
 	mkdir -p emu
-	wget -c -P emu https://github.com/libretro/ludo/releases/download/v0.17.1/Ludo-Linux-x11-x86_64-0.17.1.tar.gz
+	wget -c -P target https://github.com/libretro/ludo/releases/download/v0.17.1/Ludo-Linux-x11-x86_64-0.17.1.tar.gz
 
 target/ludo: target/Ludo-Linux-x11-x86_64-0.17.1.tar.gz
-	tar xf emu/Ludo-Linux-x11-x86_64-0.17.1.tar.gz -C emu --strip 1
+	tar xf target/Ludo-Linux-x11-x86_64-0.17.1.tar.gz -C target --strip 1
 
 target/hawkthorne.lutro: target/ludo build/hawkthorne.love
-	cp build/hawkthorne.love emu/hawkthorne.lutro
+	cp build/hawkthorne.love target/hawkthorne.lutro
 
 emu: target/hawkthorne.lutro
-	(cd emu && ./ludo -L cores/lutro_libretro.so hawkthorne.lutro)
+	(cd target && ./ludo -L cores/lutro_libretro.so hawkthorne.lutro)
