@@ -271,3 +271,6 @@ wasm: build/hawkthorne.love
 	(cd wasm && npm i love.js)
 	(cd wasm && npx love.js ../build/hawkthorne.love game -c -m 100000000)
 	(cd wasm && python3 -m http.server --bind 127.0.0.1 8080)
+
+arm: build/hawkthorne.love
+	(cd build && SDL_VIDEODRIVER=directfb qemu-arm  -L . love hawkthorne.love)

@@ -311,17 +311,5 @@ function love.draw()
   end
 end
 
---function love.draw()
---end
---
---function love.update(dt)
---end
---
---function love.load()
---end
---
---function love.keyreleased()
---end
---
---function love.keypressed()
---end
+
+
