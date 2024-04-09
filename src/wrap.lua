@@ -7,7 +7,6 @@ local Gamestate = require 'vendor/gamestate'
 local sound = require 'TEsound'
 local timer = require 'vendor/timer'
 local cli = require 'cliargs'
-local mixpanel = require 'vendor/mixpanel'
 
 local debugger = require 'debugger'
 local camera = require 'camera'
@@ -45,13 +44,7 @@ function love.load(arg)
   -- The Mavericks builds of Love adds too many arguments
   arg = utils.cleanarg(arg)
 
-  local mixpanel = require 'vendor/mixpanel'
-
   local state, door, position = 'update', nil, nil
-
-  -- SCIENCE!
-  mixpanel.init(app.config.iteration)
-  mixpanel.track('game.opened')
 
   -- set settings
   local options = require 'options'
