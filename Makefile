@@ -116,7 +116,7 @@ deps:
 	luarocks --lua-version $(LUA_VERSION) install fennel
 	luarocks --lua-version $(LUA_VERSION) install lua_cliargs 2.0-1
 	luarocks --lua-version $(LUA_VERSION) install inspect 1.2-2
-	luarocks --lua-version $(LUA_VERSION) install luasocket
+	luarocks --lua-version $(LUA_VERSION) install hump
 patch: deps
 	cp patches/*.patch lua_modules/share/lua/$(LUA_VERSION)/
 	rm -f lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua
