@@ -227,11 +227,6 @@ contributors: venv
 validate: venv lint
 	venv/bin/python scripts/validate.py src
 
-lint:
-	touch src/maps/init.lua
-	find src -name "*.lua" | grep -v "src/vendor" | grep -v "src/test" | \
-		xargs -I {} ./scripts/lualint.lua -r "{}"
-
 clean:
 	rm -rf build
 	rm -f release.md
