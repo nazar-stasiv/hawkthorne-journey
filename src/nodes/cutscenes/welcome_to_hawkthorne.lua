@@ -1,6 +1,6 @@
 local anim8 = require 'vendor/anim8'
 local gamestate = require 'vendor/gamestate'
-local tween = require 'vendor/tween'
+local tween = require 'tween'
 local sound = require 'TEsound'
 local middle = require 'middleclass'
 

@@ -6,7 +6,7 @@ local app = require 'app'
 local anim8 = require 'vendor/anim8'
 local gamestate = require 'vendor/gamestate'
 local timer = require 'vendor/timer'
-local tween = require 'vendor/tween'
+local tween = require 'tween'
 
 local game = require 'game'
 local camera = require 'camera'

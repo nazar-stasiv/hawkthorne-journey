@@ -2,7 +2,7 @@ local fennel = require 'fennel'
 local utils = require 'utils'
 local app = require 'app'
 
-local tween = require 'vendor/tween'
+local tween = require 'tween'
 local Gamestate = require 'vendor/gamestate'
 local sound = require 'TEsound'
 local timer = require 'vendor/timer'

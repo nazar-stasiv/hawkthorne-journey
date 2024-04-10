@@ -1,5 +1,5 @@
 local Gamestate = require 'vendor/gamestate'
-local Tween = require 'vendor/tween'
+local Tween = require 'tween'
 local anim8 = require 'vendor/anim8'
 local sound = require 'TEsound'
 local Prompt = require 'prompt'

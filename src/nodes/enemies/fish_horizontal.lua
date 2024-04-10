@@ -1,4 +1,4 @@
-local tween = require 'vendor/tween'
+local tween = require 'tween'
 
 return {
   name = 'fish_horizontal',

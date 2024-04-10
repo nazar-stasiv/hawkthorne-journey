@@ -1,7 +1,7 @@
 -- inculdes
 local sound = require 'TEsound'
 local Timer = require('vendor/timer')
-local tween = require 'vendor/tween'
+local tween = require 'tween'
 local character = require 'character'
 local Gamestate = require 'vendor/gamestate'
 local utils = require 'utils'

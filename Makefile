@@ -111,7 +111,6 @@ deps:
 	luarocks --lua-version $(LUA_VERSION) install JSON4Lua
 	luarocks --lua-version $(LUA_VERSION) install middleclass 3.0.0-1
 	luarocks --lua-version $(LUA_VERSION) install anim8
-	luarocks --lua-version $(LUA_VERSION) install tween
 	luarocks --lua-version $(LUA_VERSION) install lunatest 0.9.5
 	luarocks --lua-version $(LUA_VERSION) install fennel
 	luarocks --lua-version $(LUA_VERSION) install lua_cliargs 2.0-1
@@ -121,6 +120,7 @@ patch: deps
 	cp patches/*.patch lua_modules/share/lua/$(LUA_VERSION)/
 	rm -f lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua
 	wget -O lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua https://github.com/drhayes/TESound/raw/master/tesound.lua
+	wget -O lua_modules/share/lua/$(LUA_VERSION)/tween.lua https://github.com/kikito/tween.lua/raw/v1.0.1/tween.lua
 	patch -d lua_modules/share/lua/$(LUA_VERSION) -i tesound.patch
 	patch -d lua_modules/share/lua/$(LUA_VERSION) -i cliargs.patch
 	patch -d lua_modules/share/lua/$(LUA_VERSION) -i lunatest.patch
