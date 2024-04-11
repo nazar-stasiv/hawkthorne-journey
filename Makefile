@@ -84,7 +84,7 @@ ifeq ($(UNAME), Darwin)
   LOVE = bin/love.app/Contents/MacOS/love
 else
   TMXTAR = tmx2lua.linux.tar
-  LOVE = bin/love
+  LOVE = /usr/bin/love
 endif
 
 ifeq ($(shell which wget),)
@@ -128,11 +128,8 @@ patch: deps
 run: $(tilemaps) $(LOVE)
 	LUA_PATH=$(LUA_PATH) LUA_CPATH=$(LUA_CPATH) $(LOVE) src
 
-src/maps/%.lua: src/maps/%.tmx bin/tmx2lua
-	bin/tmx2lua $<
-
-bin/tmx2lua:
-	ln -s /usr/bin/tmx2lua bin/tmx2lua
+src/maps/%.lua: src/maps/%.tmx
+	$$HOME/.local/bin/tmx2lua $<
 
 bin/love.app/Contents/MacOS/love:
 	mkdir -p bin
@@ -141,91 +138,6 @@ bin/love.app/Contents/MacOS/love:
 	rm -f love-11.3-macos.zip
 	mv love.app bin
 	cp osx/Info.plist bin/love.app/Contents
-
-bin/love:
-	mkdir -p bin
-	ln -s /usr/bin/love bin/love
-
-
-######################################################
-# THE REST OF THESE TARGETS ARE FOR RELEASE AUTOMATION
-######################################################
-
-CI_TARGET=test validate maps productionize binaries
-
-ifeq ($(TRAVIS), true)
-ifeq ($(TRAVIS_PULL_REQUEST), false)
-ifeq ($(TRAVIS_BRANCH), release)
-CI_TARGET=clean test validate maps productionize social
-endif
-endif
-endif
-
-positions: $(patsubst %.png,%.lua,$(wildcard src/positions/*.png))
-
-src/positions/%.lua: psds/positions/%.png
-	overlay2lua src/positions/config.json $<
-
-win64/love.exe:
-	$(wget) https://github.com/love2d/love/releases/download/11.3/love-11.3-win64.zip
-	unzip -q love-11.3-win64.zip
-	mv love-11.3-win64 win64
-	rm -f love-11.3-win64.zip
-	rm win64/changes.txt win64/game.ico win64/license.txt win64/love.ico win64/readme.txt
-
-win64/hawkthorne.exe: build/hawkthorne.love win64/love.exe
-	cat win64/love.exe build/hawkthorne.love > win64/hawkthorne.exe
-
-build/hawkthorne-win-x86_64.zip: win64/hawkthorne.exe
-	mkdir -p build
-	rm -rf hawkthorne
-	rm -f hawkthorne-win-x86_64.zip
-	cp -r win64 hawkthorne
-	zip --symlinks -q -r hawkthorne-win-x86_64 hawkthorne -x "*/love.exe"
-	mv hawkthorne-win-x86_64.zip build
-
-OSXAPP=Journey\ to\ the\ Center\ of\ Hawkthorne.app
-
-$(OSXAPP): build/hawkthorne.love bin/love.app/Contents/MacOS/love
-	cp -R bin/love.app $(OSXAPP)
-	cp build/hawkthorne.love $(OSXAPP)/Contents/Resources/hawkthorne.love
-	cp osx/Info.plist $(OSXAPP)/Contents/Info.plist
-	cp osx/Hawkthorne.icns $(OSXAPP)/Contents/Resources/Love.icns
-
-build/hawkthorne-osx.zip: $(OSXAPP)
-	mkdir -p build
-	zip --symlinks -q -r hawkthorne-osx $(OSXAPP)
-	mv hawkthorne-osx.zip build
-
-productionize: venv
-	venv/bin/python scripts/productionize.py
-
-binaries: build/hawkthorne-osx.zip build/hawkthorne-win-x86_64.zip
-
-upload: binaries post.md venv
-	venv/bin/python scripts/release.py
-
-social: venv notes.html post.md
-	venv/bin/python scripts/socialize.py post.md
-
-notes.html: post.md
-	venv/bin/python -m markdown post.md > notes.html
-
-post.md:
-	venv/bin/python scripts/create_post.py post.md
-
-venv:
-	virtualenv -q --python=python2.7 venv
-	venv/bin/pip install -q -r requirements.txt
-
-deploy: $(CI_TARGET)
-
-contributors: venv
-	venv/bin/python scripts/clean.py > CONTRIBUTORS
-	venv/bin/python scripts/credits.py > src/credits.lua
-
-validate: venv lint
-	venv/bin/python scripts/validate.py src
 
 clean:
 	rm -rf build

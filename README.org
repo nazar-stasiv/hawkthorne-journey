@@ -17,13 +17,15 @@ on compile
 #+begin_example
 lua_modules/bin/fennel -c patches/stdio.fnl > src/stdio.lua
 #+end_example
-* Project [0/6]
+* Project [0/8]
 - [ ] replace hardoncollider with hc
 - [ ] replace gamestate, timer, vector with hump
 - [ ] replace tween anim8
-- [ ] buildroot toolchain with  luajit, sdl2, libgl
-- [ ] qemu-arm -L . love gamefile.love
+- [ ] tiled --resolve-types-and-properties --embed-tilesets --export-map lua $< $(basename $<).lua
 - [ ] antifennel source and integrate repl
+- [ ] embed source into love
+- [ ] buildroot toolchain with  love, luajit, sdl2, libgl
+- [ ] qemu-arm -L . love gamefile.love
 * Game
 
 Journey  to the  Center of  Hawkthorne is  2d platformer  is based  on
