@@ -17,8 +17,9 @@ on compile
 #+begin_example
 lua_modules/bin/fennel -c patches/stdio.fnl > src/stdio.lua
 #+end_example
-* Project [0/8]
+* Project [0/11]
 - [ ] replace hardoncollider with hc
+- [ ] HC provides physics, love embeds box2d, do I need both?
 - [ ] replace gamestate, timer, vector with hump
 - [ ] replace tween anim8
 - [ ] tiled --resolve-types-and-properties --embed-tilesets --export-map lua $< $(basename $<).lua
@@ -26,6 +27,8 @@ lua_modules/bin/fennel -c patches/stdio.fnl > src/stdio.lua
 - [ ] embed source into love
 - [ ] buildroot toolchain with  love, luajit, sdl2, libgl
 - [ ] qemu-arm -L . love gamefile.love
+- [ ] binary = cat path/to/love path/to/game > binary
+- [ ] combine saves in $HOME/.local/share/hawkthorne $HOME/.local/share/love/hawkthorne 
 * Game
 
 Journey  to the  Center of  Hawkthorne is  2d platformer  is based  on

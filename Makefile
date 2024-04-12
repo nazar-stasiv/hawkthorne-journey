@@ -57,7 +57,7 @@ clean:
 count:
 	cloc src --exclude-list-file=.gitignore
 
-run: 
+run:
 	LUA_PATH=$(LUA_PATH) LUA_CPATH=$(LUA_CPATH) /usr/bin/love src
 
 wasm: build/hawkthorne.love
