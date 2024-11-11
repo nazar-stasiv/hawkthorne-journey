@@ -1,0 +1,61 @@
+* dependencies [0/4]
+
+- [ ] replace hardoncollider with https://luarocks.org/modules/vrld/hc
+- [ ] replace gamestate, timer, vector with https://luarocks.org/modules/vrld/hump
+- [ ] replace tween with https://luarocks.org/modules/kikito/tween
+- [ ] replace anim8 with https://luarocks.org/modules/RED-H0T-CHILLI-VELVET/anim8
+- [ ] remove TastyText
+- [ ] replace utf8.lua with https://www.love2d.org/wiki/utf8
+
+* unit tests [0/4]
+
+- [ ] https://wiki.fennel-lang.org/Repl
+#+begin_src lua
+-- bootstrap the compiler
+
+local fennel = require("fennel").install({correlate=true,
+					  moduleName="fennel"})
+
+local make_love_searcher = function(env)
+   return function(module_name)
+      local path = module_name:gsub("%.", "/") .. ".fnl"
+      if love.filesystem.getInfo(path) then
+         return function(...)
+            local code = love.filesystem.read(path)
+            return fennel.eval(code, {env=env}, ...)
+
+table.insert(package.loaders, make_love_searcher(_G))
+table.insert(fennel["macro-searchers"], make_love_searcher("_COMPILER"))
+
+require("wrap")                     
+#+end_src
+- [ ] init repl on love.load
+#+begin_src lisp
+(local repl (require :stdio))
+(repl.start)
+#+end_src
+- [ ] aot compile stdio
+#+begin_example
+lua_modules/bin/fennel -c patches/stdio.fnl > src/stdio.lua
+#+end_example
+- [ ] rewrite unit tests with fennel  
+
+* binary [0/2]
+- [ ] compile
+#+begin_src bash
+LIBS := $(wildcard lua_modules/share/lua/5.1/*)
+LUA := $(wildcard src/*.lua)
+SRC := $(wildcard src/*.fnl)
+OUT := $(patsubst src/%.fnl,src/%.lua,$(SRC))
+FENNEL := fennel --lua lua
+luarocks --lua-version $(LUA_VERSION) install fennel
+src/%.lua: src/%.fnl
+    ${FENNEL} --require-as-include --compile $< >> $@
+
+src/maps/%.lua: src/maps/%.tmx
+    tiled --resolve-types-and-properties --embed-tilesets --export-map lua $< $(basename $<).lua ; .
+#+end_src
+- [ ] link
+#+begin_src sh
+cat /usr/bin/love /path/to/game > /path/to/binary
+#+end_src
