@@ -1,11 +1,10 @@
-* dependencies [0/4]
+* dependencies [1/5]
 
 - [ ] replace hardoncollider with https://luarocks.org/modules/vrld/hc
 - [ ] replace gamestate, timer, vector with https://luarocks.org/modules/vrld/hump
 - [ ] replace tween with https://luarocks.org/modules/kikito/tween
 - [ ] replace anim8 with https://luarocks.org/modules/RED-H0T-CHILLI-VELVET/anim8
-- [ ] remove TastyText
-- [ ] replace utf8.lua with https://www.love2d.org/wiki/utf8
+- [X] replace TastyText with https://github.com/markandgo/text.lua
 
 * unit tests [0/4]
 

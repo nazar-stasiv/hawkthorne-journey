@@ -1,0 +1,43 @@
+diff --git a/tastytext.lua b/tastytext.lua
+index 393fecd..824ab14 100644
+--- a/tastytext.lua
++++ b/tastytext.lua
+@@ -58,13 +58,12 @@ chunk = {
+ }
+ ]]
+ 
+-local path = (...):match('.+%.')
+-require (path..'utf8')
++require('./utf8')
+ 
+ -------------------
+ -- GLOBALS
+-local START = '<'
+-local END   = '>'
++local START = '{{'
++local END   = '}}'
+ local ESCAPE= '\\'
+ -------------------
+ 
+@@ -77,9 +77,11 @@ local escape_tag = string.format('%s([%s%s])',ESCAPE,START,END)
+ local TastyText  = {}
+ TastyText.__index= TastyText
+ 
+-function TastyText.new(str,limit,default_font,tags,line_height)
++function TastyText.new(str,x,y,limit,default_font,tags,line_height)
+ 	default_font = default_font or love.graphics.getFont()
+ 	local t = setmetatable({
++		x           = x,
++		y           = y,
+ 		limit       = limit,
+ 		default_font= default_font,
+ 		line_height = line_height or default_font:getHeight(),
+@@ -167,7 +169,7 @@ function TastyText:draw()
+ 				local str,new_width = self:_getSubString(chunk,
+ 					position,position+chunk.length,
+ 					love.graphics.getFont())		
+-				love.graphics.print(str,x+ox,chunk.y)
++				love.graphics.print(str,self.x + x + ox,self.y + chunk.y)
+ 				width = new_width
+ 				
+ 			end

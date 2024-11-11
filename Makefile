@@ -45,6 +45,9 @@ patch: deps
 > wget -O lua_modules/share/lua/$(LUA_VERSION)/tween.lua https://github.com/kikito/tween.lua/raw/v1.0.1/tween.lua
 > wget -O lua_modules/share/lua/$(LUA_VERSION)/TEsound.lua https://github.com/drhayes/TESound/raw/master/tesound.lua
 > patch -d lua_modules/share/lua/$(LUA_VERSION) -i tesound.patch
+> wget -O lua_modules/share/lua/$(LUA_VERSION)/tastytext.lua https://github.com/markandgo/text.lua/raw/refs/tags/v2.0/src/tastytext.lua
+> patch -d lua_modules/share/lua/$(LUA_VERSION) -i tastytext.patch
+> wget -O lua_modules/share/lua/$(LUA_VERSION)/utf8.lua https://github.com/markandgo/text.lua/raw/refs/tags/v2.0/src/utf8.lua
 
 target/hawkthorne.love: patch
 > mkdir -p target
