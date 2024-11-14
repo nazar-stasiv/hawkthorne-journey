@@ -29,6 +29,10 @@ local function getVersion()
 end
 
 function love.load(arg)
+  if arg[1] == "--test" then
+    testing = true
+  end
+
   -- Check if this is the correct version of LOVE
   if not (type(love._version) == "string")
   then

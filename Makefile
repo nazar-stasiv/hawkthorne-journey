@@ -13,8 +13,8 @@ endif
 help: ## Display this help section
 > @awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9_-]+:.*?## / {printf "\033[36m%-38s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-.DEFAULT_GOAL := run
-.PHONY: maps deps patch clean count run
+.DEFAULT_GOAL := target/hawkthorne.love
+.PHONY: maps deps patch clean count run test
 
 LUA_VERSION := "5.1"
 LUA_PATH := "$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?.lua;$(CURDIR)/lua_modules/share/lua/$(LUA_VERSION)/?/init.lua;${LUA_PATH}"
@@ -66,6 +66,9 @@ clean:
 count:
 > cloc src --exclude-list-file=.gitignore
 
-run: target/hawkthorne.love
+run:
 > LUA_PATH=$(LUA_PATH) LUA_CPATH=$(LUA_CPATH) love src
+
+test:
+> LUA_PATH=$(LUA_PATH) LUA_CPATH=$(LUA_CPATH) love src --test
 

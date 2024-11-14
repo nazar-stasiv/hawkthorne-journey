@@ -1,4 +1,5 @@
 src/maps/*.lua
+target
 .luarocks
 build
 lua_modules
