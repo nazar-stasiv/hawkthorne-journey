@@ -1,3 +1,4 @@
+-- TODO replace vector with https://luarocks.org/modules/vrld/hump
 vector = {}
 vector.__index = vector
 

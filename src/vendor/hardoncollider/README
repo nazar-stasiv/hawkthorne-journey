@@ -2,3 +2,4 @@ General Purpose 2D Collision Detection System
 
 Documentation and examples here:
 http://vrld.github.com/HardonCollider
+TODO replace hardoncollider with https://luarocks.org/modules/vrld/hc
